@@ -39,9 +39,19 @@ header p {
     color: white;
   }
 
-.alldone {
+#alldone {
     text-align: center;
     font-size: 24px;
+}
+
+#score {
+    text-align: center;
+    font-size: 18px;
+}
+
+#enterin {
+    text-align: center;
+    font-size: 18px;
 }
 
 .questions { 
@@ -58,6 +68,17 @@ header p {
 }
 
 .button {
+    margin: 10px;
+    position: relative;
+    left: 30%;
+    width: 225px;
+    /*-ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);*/
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color:purple;
+    color: white;
     display: block;
-    text-align: center;
+    align-content: center;
 }
