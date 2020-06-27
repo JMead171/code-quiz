@@ -7,35 +7,29 @@
         <link rel="stylesheet" href="./assets/css/style.css">
     </head>
     <body>
-        <section class="start-quiz">
-            <!-- Start Quiz -->
-            <p>This is a timed quiz challenge.  You will be shown five questios</p>
-            <!-- button to start -->
-            <button>Start Quiz</button>
+        <header>
+            <p class="highscore">view highscore</p>
+            <p class="timer" id="countdown">Time: <span id="count">0</span></p>
+        </header>
+
+        <section class="start-quiz" id="startquiz">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Welcome to the Quiz Challenge.  You will be shown five questios and will have 50 seconds to answer them all.  For each wrong answer 5 seconds will be deducted.  Your score will be displayed at the end.  Good Luck!</p>
+            <button id="start">Start Quiz</button>
         </section>
 
-        <section class="questions">
-             <!-- view highscores -->
-
-            <!-- timer -->
-
-            <!-- Question -->
-            <div class="answers">
-            <!-- 4 answers using ul & li & button -->
-            </div>
-
-            <!-- Correct/Wrong message -->
+        <section class="questions" id="questions">
+            <h1 id="question"></h1>
+            <div id="answer"></div>
+            <h2 id="result"></h2>
         </section>
 
-        <section class="all-done">
-            <!-- All Done-->
-
+        <section class="summary">
+            <h2 id="alldone"></h2>
         </section>
 
         <section class="high-scores">
-            <!-- hight scores -->
-
-            <!-- go back & clear high scores -->
+            <h2 id="highscore"></h2>
         </section>
 
         <script src="./assets/js/script.js"></script>
