@@ -1,5 +1,6 @@
 var i = 0;
 var s = 0;
+var timeLeft = 0;
 var correct = "n";
 var name = "Billy";
 var timerE1 = document.getElementById('countdown');
@@ -78,8 +79,6 @@ function startQuiz() {
 }
 
 function askQuestion() {
-    console.log(i);
-    console.log(correct);
     questE1.textContent = questArr[i].q;
 
     // Create button
@@ -114,66 +113,57 @@ function askQuestion() {
     btnE3.textContent = questArr[i].a3;
     btnE4.textContent = questArr[i].a4;
 
-    console.log(questArr[i].a);
-
     // Check which button was clicked
     btn1.onclick = function () {
-        if (button1.textContent = questArr[i].a) {
+        if (btnE1.textContent === questArr[i].a) {
             resultE1.textContent = "Correct!";
             resultE1.className = "result";
-            console.log("Correct");
             s++;
         } else {
-            resultE1.textContent = "WRONG";
+            resultE1.textContent = "Wrong";
             resultE1.className = "result";
-            console.log("Wrong");
             timeLeft--;
         }
+        arrayQuestions();
     }
 
     btn2.onclick = function () {
-        if (button2.textContent = questArr[i].a) {
+        if (btnE2.textContent === questArr[i].a) {
             resultE1.textContent = "Correct!";
             resultE1.className = "result";
-            console.log("Correct");
             s++;
         } else {
-            resultE1.textContent = "WRONG";
+            resultE1.textContent = "Wrong";
             resultE1.className = "result";
-            console.log("Wrong");
             timeLeft--;
         }
-        arrayQuestions()
+        arrayQuestions();
     }
 
     btn3.onclick = function () {
-        if (button3.textContent = questArr[i].a) {
+        if (btnE3.textContent === questArr[i].a) {
             resultE1.textContent = "Correct!";
             resultE1.className = "result";
-            console.log("Correct");
             s++;
         } else {
-            resultE1.textContent = "WRONG";
+            resultE1.textContent = "Wrong";
             resultE1.className = "result";
-            console.log("Wrong");
             timeLeft--;
         }
-        arrayQuestions()
+        arrayQuestions();
     }
 
     btn4.onclick = function () {
-        if (button4.textContent = questArr[i].a) {
+        if (btnE4.textContent === questArr[i].a) {
             resultE1.textContent = "Correct!";
             resultE1.className = "result";
-            console.log("Correct");
             s++;
         } else {
-            resultE1.textContent = "WRONG";
+            resultE1.textContent = "Wrong";
             resultE1.className = "result";
-            console.log("Wrong");
             timeLeft--;
         }
-        arrayQuestions()
+        arrayQuestions();
     }
 }
 
@@ -188,15 +178,13 @@ function arrayQuestions() {
 
 // Timer
 function countdown() {
-    var timeLeft = 2;
+    timeLeft = 15;
 
     var timeInterval = setInterval(function () {
-        console.log(timeLeft);
         if (timeLeft > 0) {
             countE1.textContent = timeLeft;
             timeLeft--;
         } else {
-            console.log("else")
             clearInterval(timeInterval);
             displaySummary();
         }
@@ -205,7 +193,6 @@ function countdown() {
 
 // All done summary
 function displaySummary() {
-    console.log(s);
     questions.style.display = "none";
     alldoneE1.textContent = "ALL DONE";
     alldoneE1.className = "allDone";
@@ -221,24 +208,32 @@ function displaySummary() {
     submit.textContent = "submit";
     submit.id = "btnS";
     submitE1.appendChild(submit);
-    debugger;
+
     btnS.onclick = function () {
-        console.log(s);
-        var lHighScore = localStorage.getItem("highscore");
-        // savedTasks = JSON.parse(savedTasks);
+        event.preventDefault();
+        var init = document.querySelector("#enterin").value;
+        //JSON.parse(init);
+        console.log(init);
+        var lHighScore = localStorage.getItem("HS");
         if (lHighScore == null) {
             lHighScore = 0;
         }
-        if (s > highScore) {
-            localStorage.setItem("lHighscore", s);
-            localStorage.setItem("lName", initialInput);
-            //  localStorage.setItem("tasks", JSON.stringify(tasks));
+        if (s > lHighScore) {
+            localStorage.setItem("HS", s);
+            // localStorage.setItem("lName", init);
+            localStorage.setItem("lName", JSON.stringify(init));
         }
+    viewHighScore();
     }
 };
 
 // High score
 function viewHighScore() {
+    var lHighScore = localStorage.getItem("HS");
+        if (lHighScore == null) {
+            lHighScore = 0;
+        }
+    s = lHighScore;    
     questions.style.display = "none";
     startquiz.style.display = "none";
     summary.style.display = "none";
@@ -257,21 +252,13 @@ function viewHighScore() {
     gobackE1.appendChild(goback);
 
     btnC.onclick = function () {
-        console.log(s);
-        var lHighScore = localStorage.getItem("highscore");
-        // savedTasks = JSON.parse(savedTasks);
-        if (lHighScore == null) {
-            lHighScore = 0;
-        }
-        if (s > highScore) {
-            localStorage.setItem("lHighscore", 0);
-            localStorage.setItem("lName", " ");
-            //  localStorage.setItem("tasks", JSON.stringify(tasks));
-        }
+        localStorage.setItem("HS", 0);
+        // localStorage.setItem("lName", init);
+        //localStorage.setItem("lName", JSON.stringify("));
     }
 
     btnG.onclick = function () {
-        startQuiz();
+        window.location.reload();
     }
 };
 

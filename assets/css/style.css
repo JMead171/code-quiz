@@ -63,6 +63,7 @@ header p {
     background-color:purple;
     color: white;
     display: block;
+    text-align: left;
     align-content: left;
 }
 
@@ -84,7 +85,7 @@ header p {
 .buttonH {
     margin: 10px;
     position: relative;
-    left: 46%;
+    left: 47%;
     width: 75px;
     padding: 5px;
     cursor: pointer;
@@ -98,7 +99,7 @@ header p {
 #result {
     text-align: center;
     color: lightslategrey;
-    font-size: 32px;
+    font-size: 28px;
 }
 
 #alldone {
