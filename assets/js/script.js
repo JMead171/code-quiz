@@ -1,3 +1,5 @@
+var i = 0;
+var s = 0;
 var timerE1 = document.getElementById('countdown');
 var alldoneE1 = document.querySelector('#alldone');
 var startBtn = document.getElementById('start');
@@ -8,6 +10,7 @@ var questE1 = document.getElementById('question');
 var answerE1 = document.querySelector('#answer');
 var scoreE1 = document.querySelector('#score');
 var enterinE1 = document.querySelector('#enterin');
+var highscoreE1 = document.querySelector('#highscore');
 
 var questArr = [
     {   q:"Which of the following is not a Javascript operator?",
@@ -49,70 +52,62 @@ var questArr = [
     a4: "None of the above",
     a: "2names"
     },
-]
+];
 
 
 
 // Start quiz
 function startQuiz () {
     startquiz.style.display = "none";
+    countdown();
     askQuestion();
 }
 
 function askQuestion () {
-
-    for (var i = 0; i < questArr.length; i++) {
-        countdown();
-        questE1.textContent = questArr[i].q;
+//    questions.style.display = "none";
+    questE1.textContent = questArr[i].q;
         
-        var button1 = document.createElement("button");
-        button1.textContent = questArr[i].a1;
-        button1.className = "button";
-        //button1.setAttribute()
-        answerE1.appendChild(button1);
+    var button1 = document.createElement("button");
+    button1.textContent = questArr[i].a1;
+    button1.className = "button";
+    answerE1.appendChild(button1);
                 
-        var button2 = document.createElement("button");
-        button2.textContent = questArr[i].a2;
-        button2.className = "button";
-        answerE1.appendChild(button2);
+    var button2 = document.createElement("button");
+    button2.textContent = questArr[i].a2;
+    button2.className = "button";
+    answerE1.appendChild(button2);
 
-        var button3 = document.createElement("button");
-        button3.textContent = questArr[i].a3;
-        button3.className = "button";
-        answerE1.appendChild(button3);
+    var button3 = document.createElement("button");
+    button3.textContent = questArr[i].a3;
+    button3.className = "button";
+    answerE1.appendChild(button3);
 
-        var button4 = document.createElement("button");
-        button4.textContent = questArr[i].a4;
-        button4.className = "button";
-        answerE1.appendChild(button4);
-        
-        var ans = questArr[i].a;
-        if (button1.onclick) {
-            console.log("button1");
+    var button4 = document.createElement("button");
+    button4.textContent = questArr[i].a4;
+    button4.className = "button";
+    answerE1.appendChild(button4);
+
+    answerE1.addEventListener("click", function() {
+        console.log(answerE1);
+        if (i < questArr.length) {
+            checkAnswer();                
+            i++;
+            askQuestion();
+        } else { 
+            return;
         }
-        if (button2.onclick) {
-            console.log("button2");
-        }
-        if (button3.onclick) {
-            console.log("button3");
-        }
-        if (button4.onclick) {
-            console.log("button4");
-        }                 
-    }
-}
+    })
+};
 
 function checkAnswer () {
-    //if (answerE1 = questArr[i].a) {
-    console.log("Check answer");
-    console.log(button1.textContent);
-    console.log(button2.textContent);
-    console.log(ans)
-
-    //} else {
-    //    console.log("Wrong");
-    //}
-}
+    if (answerE1 = questArr[i].a) {
+        console.log("Correct");
+        s++;
+    } else {
+        console.log("Wrong");
+        timeLeft-5;
+    }
+};
 
 
 // Timer
@@ -137,38 +132,42 @@ function displaySummary() {
     questions.style.display = "none";
     alldoneE1.textContent = "ALL DONE";
     alldoneE1.className = "allDone";
-    scoreE1.textContent = "Your final score: ";
+    scoreE1.textContent = "Your final score: " + s;
     scoreE1.className = "score";
     enterinE1.textContent = "Enter your initials ";
     enterinE1.className = "enterin";
-}
+    var initialInput = document.createElement("input");
+    initialInput.className = "input";
+    enterinE1.appendChild(initialInput);
+};
 
+// High score
+function viewHighScore () {
+    summary.style.display = "none";
+    alldoneE1.textContent = "High Score";
+}
 
 startBtn.onclick = startQuiz;
 
-// header class="start-quiz">
-// <!-- Start Quiz -
+//    var highScore = localStorage.getItem("highscore");
+//   if (highScore == null) {
+//        highScore = 0;
+//    }
+//    if (score > highScore) {
+//        localStorage.setItem("highscore", playerInfo.money);
+//        localStorage.setItem("name", playerInfo.name);
+//        window.alert(playerInfo.name + " now has the high score of " + playerInfo.money + "!");
+//    else {
+//        window.alert(playerInfo.name + " did not beat the high score of " + highScore + ". Maybe next time!");
 
-// <!-- button to start -->
+//      localStorage.setItem("tasks", JSON.stringify(tasks));
+        
+// Gets tasks from localStorage
+//               var savedTasks = localStorage.getItem("tasks");
+      
+//    if (!savedTasks) {
+//        return false;
+//      }
+// Convert Tasks from stringified
+//    savedTasks = JSON.parse(savedTasks);
 
-
-// section class="questions">
-//  <!-- view highscores -->
-
-// <!-- timer -->
-
-// <!-- Question -->
-
-// <!-- 4 answers using ul & li & button -->
-
-// <!-- Correct/Wrong message -->
-
-
-// section class="all-done">
-// <!-- All Done-->
-
-
-// section class="high-scores"
-// <!-- hight scores -->
-
-// <!-- go back & clear high scores -->
