@@ -1,8 +1,6 @@
 var i = 0;
 var s = 0;
 var timeLeft = 0;
-var correct = "n";
-var name = "Billy";
 var timerE1 = document.getElementById('countdown');
 var alldoneE1 = document.querySelector('#alldone');
 var resultE1 = document.querySelector('#result');
@@ -18,10 +16,13 @@ var clearE1 = document.querySelector('#clear');
 var gobackE1 = document.querySelector('#goback');
 var scoreE1 = document.querySelector('#score');
 var enterinE1 = document.querySelector('#enterin');
+var enterIntE1 = document.querySelector('#enterInt');
 var highscoreE1 = document.querySelector('#highscore');
 var highNmScE1 = document.querySelector('#highNmSc');
 var hiScoreE1 = document.querySelector('#hiScore');
 
+
+// Array of questions and answers
 var questArr = [
     {
         q: "Which of the following is not a Javascript operator?",
@@ -78,10 +79,11 @@ function startQuiz() {
     askQuestion();
 }
 
+// Questions and answer logic
 function askQuestion() {
     questE1.textContent = questArr[i].q;
 
-    // Create button
+    // Create answer buttons
     if (i === 0) {
         var button1 = document.createElement("button");
         button1.className = "button";
@@ -172,13 +174,17 @@ function arrayQuestions() {
     if (i < questArr.length - 1) {
         i++;
         askQuestion();
+    } else {
+        if (i >= questArr.length - 1) {
+            timeLeft = 0;
+        }
     }
-}
+};
 
 
 // Timer
 function countdown() {
-    timeLeft = 15;
+    timeLeft = 25;
 
     var timeInterval = setInterval(function () {
         if (timeLeft > 0) {
@@ -198,48 +204,51 @@ function displaySummary() {
     alldoneE1.className = "allDone";
     scoreE1.textContent = "Your final score: " + s;
     scoreE1.className = "score";
+
     enterinE1.textContent = "Enter your initials ";
     enterinE1.className = "enterin";
     var initialInput = document.createElement("input");
     initialInput.className = "input";
+    initialInput.id = "input";
     enterinE1.appendChild(initialInput);
+
     var submit = document.createElement("button");
     submit.className = "buttonS";
     submit.textContent = "submit";
     submit.id = "btnS";
     submitE1.appendChild(submit);
 
-    btnS.onclick = function () {
+    // Save high score to local storage
+    btnS.onclick = function (event) {
         event.preventDefault();
-        var init = document.querySelector("#enterin").value;
-        //JSON.parse(init);
-        console.log(init);
+        initials = document.querySelector("#input").value;
+        
         var lHighScore = localStorage.getItem("HS");
         if (lHighScore == null) {
             lHighScore = 0;
         }
         if (s > lHighScore) {
             localStorage.setItem("HS", s);
-            // localStorage.setItem("lName", init);
-            localStorage.setItem("lName", JSON.stringify(init));
+            localStorage.setItem("lName", initials);
         }
-    viewHighScore();
+        viewHighScore();
     }
 };
 
-// High score
+// High score summary, retrieve high score and clear high score
 function viewHighScore() {
     var lHighScore = localStorage.getItem("HS");
-        if (lHighScore == null) {
-            lHighScore = 0;
-        }
-    s = lHighScore;    
+    var linitials = localStorage.getItem("lName");
+    if (lHighScore == null) {
+        lHighScore = 0;
+    }
+    
     questions.style.display = "none";
     startquiz.style.display = "none";
     summary.style.display = "none";
     highscoreE1.textContent = "High Score";
-    highNmScE1.textContent = "Name: " + name;
-    hiScoreE1.textContent = "Score: " + s;
+    highNmScE1.textContent = "Name: " + linitials;
+    hiScoreE1.textContent = "Score: " + lHighScore;
     var clear = document.createElement("button");
     clear.className = "buttonH";
     clear.textContent = "Clear";
@@ -253,8 +262,9 @@ function viewHighScore() {
 
     btnC.onclick = function () {
         localStorage.setItem("HS", 0);
-        // localStorage.setItem("lName", init);
-        //localStorage.setItem("lName", JSON.stringify("));
+        localStorage.setItem("lName", " ")
+        highNmScE1.textContent = "Name: " + " ";
+        hiScoreE1.textContent = "Score: " + 0;
     }
 
     btnG.onclick = function () {

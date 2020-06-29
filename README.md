@@ -1,35 +1,38 @@
 # Name
-JavaScript Code Quiz.
+JavaScript Code Quiz
 
 # Description
 
-This project is a timed quiz on JavaScript fundamental.It also includes a BIO, My Work section and a Contact section.
+This project is a timed quiz on JavaScript fundamental. It includes five questions with four multiple choice answers.  Points are awarded for every correct answer, but time is deducted for every wrong answer.  The quiz displays your score at the end in a summary page.  In addition, there is also a high score page.  The high score is retrived from local storage. 
 
- - The Header uses flexbox and sticky position.  It also has navagation links to position user to appropraite section.  The header has a resume link which brings up a pdf file in a seperate window.
+ - There is a begin summary page with a start button.
 
- - The Hero section has a background image
+ - Questions will appear with four anwser, click the button to select answer.
 
- - The About Me section uses flexbox.  There is a photo and a bio paragraph
+ - Remaining time is displayed in the upper right hand corner of screen.
 
- - The My Work section uses CSS Grid with images and links to current work
+ - Once time runs out, you are brought to a summary screen that shows your score.
 
- - The footer uses flexbox and has contact information with links for email, github, linkedin and twitter.
+ - On the summary screen it asks for your initials, hit submit and you are brought to a high score page.
 
- - The CSS uses media queries to resize the page for smaller screen viewing
+ - Logic used DOM, timeInterval, array, appendchild, createElement
 
- - All images uses appropriate alt="" attribute
+ 
 
 
 # Screen Shot
-![image](https://user-images.githubusercontent.com/64744763/84599924-92f82800-ae43-11ea-85f3-7cf4e13a6e94.png)
+![image](https://user-images.githubusercontent.com/64744763/85957070-2e1af280-b958-11ea-80a9-f8216652a7d9.png)
+
+
+![image](https://user-images.githubusercontent.com/64744763/85957064-1f344000-b958-11ea-9106-47e1072e29e3.png)
 
 
 # Technology Used
-HTML, CSS, JavaScript, DOM
+HTML, CSS, JavaScript, DOM, localStorage, timeInterval, Array
 
 
 # Working Link
-https://jmead171.github.io/professional-portfolio/
+https://jmead171.github.io/code-quiz/
 
 
 # Project status

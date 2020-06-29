@@ -1,46 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Code Quiz</title>
-        <link rel="stylesheet" href="./assets/css/style.css">
-    </head>
-    <body>
-        <header>
-            <button id="highSc">view highscore</button>
-            <p class="timer" id="countdown">Time: <span id="count">0</span></p>
-        </header>
 
-        <section class="start-quiz" id="startquiz">
-            <h1>Coding Quiz Challenge</h1>
-            <p>Welcome to the Quiz Challenge.  You will be shown five questios and will have 50 seconds to answer them all.  For each wrong answer 5 seconds will be deducted.  Your score will be displayed at the end.  Good Luck!</p>
-            <button id="start">Start Quiz</button>
-        </section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
 
-        <section class="questions" id="questions">
-            <h1 id="question"></h1>
-            <div id="answer"></div>
-            <h2 id="result"></h2>
-        </section>
+<body>
+    <header>
+        <button id="highSc">view highscore</button>
+        <p class="timer" id="countdown">Time: <span id="count">0</span></p>
+    </header>
 
-        <section class="summary" id="summary">
-            <h2 id="alldone"></h2>
-            <h3 id="score"></h3>
-            <h3 type="enetrin" name="enterin" id="enterin"></h3>
-            <div id="submit"></div>
-        </section>
+    <!-- Start Quiz -->
+    <section class="start-quiz" id="startquiz">
+        <h1>Coding Quiz Challenge</h1>
+        <p>Welcome to the Quiz Challenge. You will be shown five questios and will have 25 seconds to answer them all.
+            For each wrong answer 5 seconds will be deducted. Your score will be displayed at the end. Good Luck!</p>
+        <button id="start">Start Quiz</button>
+    </section>
 
-        <section class="high-scores" id=idscores>
-            <h2 id="highscore"></h2>
-            <div id=displayScore>
-                <h3 id="highNmSc"></h3>
-                <h3 id="hiScore"></h3>
-            </div>
-            <div id="goback"></div>
-            <div id="clear"></div>
-        </section>
+    <!-- Question and Answer Section -->
+    <section class="questions" id="questions">
+        <h1 id="question"></h1>
+        <div id="answer"></div>
+        <h2 id="result"></h2>
+    </section>
 
-        <script src="./assets/js/script.js"></script>
-    </body>
+    <!-- Summary page of score -->
+    <section class="summary" id="summary">
+        <h2 id="alldone"></h2>
+        <h3 id="score"></h3>
+        <div id="enterin"></div>
+        <div id="enterInt"></div>
+        <div id="submit"></div>
+    </section>
+
+    <!-- High score page -->
+    <section class="high-scores" id=idscores>
+        <h2 id="highscore"></h2>
+        <div id=displayScore>
+            <h3 id="highNmSc"></h3>
+            <h3 id="hiScore"></h3>
+        </div>
+        <div id="goback"></div>
+        <div id="clear"></div>
+    </section>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
 </html>
