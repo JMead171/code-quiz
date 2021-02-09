@@ -237,6 +237,7 @@ function displaySummary() {
 
 // High score summary, retrieve high score and clear high score
 function viewHighScore() {
+    // document.getElementById("idscores").remove();
     var lHighScore = localStorage.getItem("HS");
     var linitials = localStorage.getItem("lName");
     if (lHighScore == null) {
@@ -249,16 +250,19 @@ function viewHighScore() {
     highscoreE1.textContent = "High Score";
     highNmScE1.textContent = "Name: " + linitials;
     hiScoreE1.textContent = "Score: " + lHighScore;
-    var clear = document.createElement("button");
-    clear.className = "buttonH";
-    clear.textContent = "Clear";
-    clear.id = "btnC";
-    clearE1.appendChild(clear);
-    var goback = document.createElement("button");
-    goback.className = "buttonH";
-    goback.textContent = "GoBack";
-    goback.id = "btnG";
-    gobackE1.appendChild(goback);
+    buttonC = document.getElementById("btnC");
+    if (!buttonC) {
+        var clear = document.createElement("button");
+        clear.className = "buttonH";
+        clear.textContent = "Clear";
+        clear.id = "btnC";
+        clearE1.appendChild(clear);
+        var goback = document.createElement("button");
+        goback.className = "buttonH";
+        goback.textContent = "GoBack";
+        goback.id = "btnG";
+        gobackE1.appendChild(goback);
+    };
 
     btnC.onclick = function () {
         localStorage.setItem("HS", 0);
